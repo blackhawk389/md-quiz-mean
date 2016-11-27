@@ -10,9 +10,9 @@ import  'rxjs/Rx'
 @Component({
   selector: 'my-app',
   template: `
-  <div class="card-container">
+  <div class="card-container" class="main_container">
    
-   <md-progress-circle  mode="determinate" [value]="rangeObs | async ">   
+   <md-progress-circle class="circle" mode="determinate" [value]="rangeObs | async ">   
    </md-progress-circle>
     <h3>{{percentage}}%</h3>
 
@@ -78,3 +78,4 @@ constructor(){
       });
 }
 
+}

@@ -1,4 +1,13 @@
 .button1 {
     float: right;
 }
+.main_container{
+    width: 80%;
+    margin: 0 auto;
+    height: 100%;
+}
+
+.circle{
+    height: 10%;
+}
 
