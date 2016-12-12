@@ -11,16 +11,16 @@ import  'rxjs/Rx'
   selector: 'my-app',
   template: `
   <div class="card-container" class="main_container">
-   
-   <md-progress-circle class="circle" mode="determinate" [value]="rangeObs | async ">   
-   </md-progress-circle>
-    <h3>{{percentage}}%</h3>
 
-    <md-card>
-      <md-card-title>Introduction to computer</md-card-title>
+    <md-card class="card_styling">
+   <md-progress-circle class="circle" mode="determinate" [value]="rangeObs | async ">  
+   </md-progress-circle>
+   <div id="time">{{percentage}}</div> 
+    
+
+      <md-card-title class="title_styling">Introduction to computer</md-card-title>
       <md-card-content>
-        <p>This is supporting text.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p class="content_style">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 <div *ngFor="let d of data">
            <md-radio-button>
                {{d.label}}
@@ -28,7 +28,7 @@ import  'rxjs/Rx'
 </div>
 
   <md-card-actions>
-        <button md-button class="button1">LIKE</button>
+        <button md-button class="button1" (click)="newQues()">Submit</button>
  </md-card-actions>
       
 </md-card-content>
@@ -46,6 +46,9 @@ export class AppComponent {
     {value: 4, label:'Flash'}
 ];
 
+newQues(){
+  console.log('function ran ');
+}
 
 clock;
 percentage : number = 0;
@@ -53,6 +56,8 @@ rangeObs;
 
 
 constructor(){
+
+  
 
 //   this.clock = Observable.interval(1000).take(61).map(function(value){
 //          if(value == 0){

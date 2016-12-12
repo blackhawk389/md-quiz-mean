@@ -42,10 +42,13 @@ var AppComponent = (function () {
             _this.percentage++;
         });
     }
+    AppComponent.prototype.newQues = function () {
+        console.log('function ran ');
+    };
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: "\n  <div class=\"card-container\" class=\"main_container\">\n   \n   <md-progress-circle class=\"circle\" mode=\"determinate\" [value]=\"rangeObs | async \">   \n   </md-progress-circle>\n    <h3>{{percentage}}%</h3>\n\n    <md-card>\n      <md-card-title>Introduction to computer</md-card-title>\n      <md-card-content>\n        <p>This is supporting text.</p>\n        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\n<div *ngFor=\"let d of data\">\n           <md-radio-button>\n               {{d.label}}\n           </md-radio-button>\n</div>\n\n  <md-card-actions>\n        <button md-button class=\"button1\">LIKE</button>\n </md-card-actions>\n      \n</md-card-content>\n    </md-card>\n  </div>",
+            template: "\n  <div class=\"card-container\" class=\"main_container\">\n\n    <md-card class=\"card_styling\">\n   <md-progress-circle class=\"circle\" mode=\"determinate\" [value]=\"rangeObs | async \">  \n   </md-progress-circle>\n   <div id=\"time\">{{percentage}}</div> \n    \n\n      <md-card-title class=\"title_styling\">Introduction to computer</md-card-title>\n      <md-card-content>\n        <p class=\"content_style\">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\n<div *ngFor=\"let d of data\">\n           <md-radio-button>\n               {{d.label}}\n           </md-radio-button>\n</div>\n\n  <md-card-actions>\n        <button md-button class=\"button1\" (click)=\"newQues()\">Submit</button>\n </md-card-actions>\n      \n</md-card-content>\n    </md-card>\n  </div>",
             styleUrls: ['../app/style.component.css']
         }), 
         __metadata('design:paramtypes', [])

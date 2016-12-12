@@ -1,0 +1,44 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.button1 {
+    float: right;
+    background-color: red;
+    width: 50%;
+    margin-right: 188px !important;
+}
+.main_container{
+    width: 80%;
+    margin: 0 auto;
+    height: 94%;
+}
+
+.card_styling{
+    background-color: lightgrey;
+    margin-top: 36px;
+    padding-top: 119px;
+    min-height: 63%;
+
+}
+.circle{
+    position: relative;
+    height: 16%;
+    float: right;
+    margin-top: -13%;
+}
+#time{
+    position: absolute;
+    float: right;
+    margin-top: -10%;
+    margin-right: 5%;
+    font-weight: bold;
+}
+.title_styling{
+    margin-top: -87px;
+    margin-bottom: 97px; 
+}
+.content_style{
+    margin-bottom: 32px;
+}
