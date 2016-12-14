@@ -12,12 +12,16 @@ var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var material_1 = require('@angular/material');
 var app_component_1 = require('./app.component');
+var http_1 = require('@angular/http');
 var AppModule = (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule, material_1.MaterialModule.forRoot()],
+            imports: [platform_browser_1.BrowserModule,
+                material_1.MaterialModule.forRoot(),
+                http_1.HttpModule
+            ],
             declarations: [app_component_1.AppComponent],
             bootstrap: [app_component_1.AppComponent]
         }), 

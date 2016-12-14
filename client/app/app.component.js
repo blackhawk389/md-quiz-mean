@@ -15,8 +15,9 @@ require('rxjs/add/observable/range');
 require('rxjs/add/operator/map');
 require('rxjs/add/operator/take');
 require('rxjs/Rx');
+var http_1 = require("@angular/http");
 var AppComponent = (function () {
-    function AppComponent() {
+    function AppComponent(http) {
         //   this.clock = Observable.interval(1000).take(61).map(function(value){
         //          if(value == 0){
         //            return  value * 100 / 61;
@@ -25,6 +26,7 @@ var AppComponent = (function () {
         //          }
         //         }).do(() => {this.percentage++;});
         var _this = this;
+        this.http = http;
         this.data = [
             { value: 1, label: 'Superman' },
             { value: 2, label: 'Batman' },
@@ -43,7 +45,38 @@ var AppComponent = (function () {
         });
     }
     AppComponent.prototype.newQues = function () {
-        console.log('function ran ');
+        console.log('new ques');
+        // this.http.get('http://localhost:3000/data').subscribe(function(data){
+        //   console.log("inside http");
+        //       console.log(data);
+        // })
+        // let headers = new Headers({ 'Content-Type': 'application/json' });
+        // let options = new RequestOptions({ headers: headers });
+        this.http.get('https://localhost:3000/data').map(function (res) {
+            var body = res.json();
+            return body.body || {};
+        }).subscribe(function (data) {
+            console.log(data);
+        });
+    };
+    AppComponent.prototype.extractData = function (res) {
+        console.log('extract');
+        var body = res.json();
+        return body.data || {};
+    };
+    AppComponent.prototype.handleError = function (error) {
+        // In a real world app, we might use a remote logging infrastructure
+        var errMsg;
+        if (error instanceof http_1.Response) {
+            var body = error.json() || '';
+            var err = body.error || JSON.stringify(body);
+            errMsg = error.status + " - " + (error.statusText || '') + " " + err;
+        }
+        else {
+            errMsg = error.message ? error.message : error.toString();
+        }
+        console.error(errMsg);
+        return Observable_1.Observable.throw(errMsg);
     };
     AppComponent = __decorate([
         core_1.Component({
@@ -51,7 +84,7 @@ var AppComponent = (function () {
             template: "\n  <div class=\"card-container\" class=\"main_container\">\n\n    <md-card class=\"card_styling\">\n   <md-progress-circle class=\"circle\" mode=\"determinate\" [value]=\"rangeObs | async \">  \n   </md-progress-circle>\n   <div id=\"time\">{{percentage}}</div> \n    \n\n      <md-card-title class=\"title_styling\">Introduction to computer</md-card-title>\n      <md-card-content>\n        <p class=\"content_style\">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\n<div *ngFor=\"let d of data\">\n           <md-radio-button>\n               {{d.label}}\n           </md-radio-button>\n</div>\n\n  <md-card-actions>\n        <button md-button class=\"button1\" (click)=\"newQues()\">Submit</button>\n </md-card-actions>\n      \n</md-card-content>\n    </md-card>\n  </div>",
             styleUrls: ['../app/style.component.css']
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [http_1.Http])
     ], AppComponent);
     return AppComponent;
 }());
